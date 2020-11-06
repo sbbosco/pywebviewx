@@ -22,8 +22,7 @@ Install-Package Microsoft.Web.WebView2 -Version 0.9.579-prerelease
 # .net cli
 dotnet add package Microsoft.Web.WebView2 --version 0.9.579-prerelease
 ```
-**Browser download**
-https://www.nuget.org/api/v2/package/Microsoft.Web.WebView2/0.9.579-prerelease
+**Browser download** https://www.nuget.org/api/v2/package/Microsoft.Web.WebView2/0.9.579-prerelease
 
 https://docs.microsoft.com/en-us/microsoft-edge/webview2/releasenotes
 

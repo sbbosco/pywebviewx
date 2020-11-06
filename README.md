@@ -15,7 +15,7 @@ The following DLL files need to be in the webview/lib folder.
 * Microsoft.Web.WebView2.WinForms.dll
 * WebView2Loader.dll (x86 or x64)
 
-The SDK DLL files are avaiable from here: https://www.nuget.org/packages/Microsoft.Web.WebView2/0.9.579-prerelease
+The SDK DLL files are available from here: https://www.nuget.org/packages/Microsoft.Web.WebView2/0.9.579-prerelease
 
 **Package manager download**
 ```

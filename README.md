@@ -29,7 +29,8 @@ The .Net DLLs are only included in the prelease versions.
 
 **Webview2 SDK Release Notes** https://docs.microsoft.com/en-us/microsoft-edge/webview2/releasenotes
 
-
+**Known Issues**
+* New window is not supported
 
 
   

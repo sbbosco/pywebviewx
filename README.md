@@ -1,7 +1,8 @@
 ## PyWebview
   
 Includes modified files to add Edge Webview2 support to the **pywebview** python package.  https://github.com/r0x0r/pywebview
-#### **New option** gui='chromium'
+#### **New option**
+gui='chromium'
 
 ### Requirements
 A Webview2 Runtime needs to be installed. Installing one of the the following will provide the runtime.

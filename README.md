@@ -22,9 +22,11 @@ Install-Package Microsoft.Web.WebView2 -Version 0.9.579-prerelease
 # .net cli
 dotnet add package Microsoft.Web.WebView2 --version 0.9.579-prerelease
 ```
-**Browser download** https://www.nuget.org/api/v2/package/Microsoft.Web.WebView2/0.9.579-prerelease
+**Browser download** https://www.nuget.org/api/v2/package/Microsoft.Web.WebView2/0.9.579-prerelease save as .zip file.
 
-https://docs.microsoft.com/en-us/microsoft-edge/webview2/releasenotes
+The latest versions of the Webview2 SDK (88.0.674.0) will not work with the current *WebView2 Runtime* (86.0.622.63) and *Edge Beta* (87.0.664.24).
+The .Net DLLs are only included in the prelease versions.
+**Webview2 SDK Release Notes** https://docs.microsoft.com/en-us/microsoft-edge/webview2/releasenotes
 
 
 

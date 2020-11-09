@@ -78,6 +78,7 @@ def _is_chromium(): ##
                 r'SOFTWARE\WOW6432Node\Microsoft\EdgeUpdate\Clients\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}')
             build, _ = winreg.QueryValueEx(windows_key, 'pv')
             build = int(build.replace('.', '')[:6])
+            print(build)
             return version >= 394802 and build >= 860622 # .NET 4.6.2 + Webview2 86.0.622.0
         except:
             build = 0
@@ -143,6 +144,7 @@ elif is_chromium: ##
     from System import Action, String
     from System.Threading.Tasks import (Task, TaskScheduler, TaskContinuationOptions)
     IWebBrowserInterop = object
+    import time
     
     logger.debug('Using WinForms / Chromium')
     renderer = 'chromium'
@@ -416,16 +418,11 @@ class BrowserView:
             """
             self.web_view.DpiAware = True
             self.web_view.IsIndexedDBEnabled = True
-            self.web_view.IsJavaScriptEnabled = True
-            self.web_view.IsScriptNotifyAllowed = True
             self.web_view.IsPrivateNetworkClientServerCapabilityEnabled = True
             self.web_view.DefaultBackgroundColor = form.BackColor
-
-            self.web_view.ScriptNotify += self.on_script_notify
-            self.web_view.NewWindowRequested += self.on_new_window_request
-            self.web_view.NavigationCompleted += self.on_navigation_completed
             """
-            self.web_view.CoreWebView2Ready += self.webview_ready
+            #settings under on_webview_ready 
+            self.web_view.CoreWebView2Ready += self.on_webview_ready
             self.web_view.NavigationStarting += self.on_navigation_start
             self.web_view.NavigationCompleted += self.on_navigation_completed
             self.web_view.WebMessageReceived += self.on_script_notify
@@ -450,6 +447,12 @@ class BrowserView:
 
         def evaluate_js(self, script):
             def callback(result):
+                """
+                if script == 'xJSON.stringify(eval("parms;"))':
+                    print('jsscript :', script)
+                    print('jsresult :', result)
+                    time.sleep(.1)
+                """
                 self.js_result = None if result is None or result == '' else json.loads(result)
                 self.js_result_semaphore.release()
 
@@ -464,6 +467,7 @@ class BrowserView:
                 self.syncContextTaskScheduler)
             except Exception as e:
                 logger.exception('Error occurred in script')
+                print('Error occurred in script')
                 result = None
                 self.js_result = None if result is None or result == '' else json.loads(result)
                 self.js_result_semaphore.release()
@@ -512,9 +516,18 @@ class BrowserView:
             webbrowser.open(str(args.get_Uri()))
             args.set_Handled(True)
 
-        def webview_ready(self, sender, args):
-            pass
-            #print('ready')            
+        def on_webview_ready(self, sender, args):
+            #print('ready')
+            sender.CoreWebView2.NewWindowRequested += self.on_new_window_request
+            settings = sender.CoreWebView2.Settings
+            settings.AreDefaultContextMenusEnabled = True
+            settings.AreDefaultScriptDialogsEnabled = True
+            settings.AreDevToolsEnabled = True
+            settings.IsBuiltInErrorPageEnabled = True 
+            settings.IsScriptEnabled = True
+            settings.IsWebMessageEnabled = True
+            settings.IsStatusBarEnabled = False
+            settings.IsZoomControlEnabled = True
             
         def on_navigation_start(self, sender, args):
             pass

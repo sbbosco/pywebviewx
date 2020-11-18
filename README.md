@@ -15,26 +15,18 @@ The following DLL files need to be in the webview/lib folder.
 * Microsoft.Web.WebView2.WinForms.dll
 * WebView2Loader.dll (x86 or x64)
 
-The SDK DLL files are available from here: https://www.nuget.org/packages/Microsoft.Web.WebView2/0.9.579-prerelease
+The SDK DLL files are available from here: https://www.nuget.org/packages/Microsoft.Web.WebView2/1.0.674-prerelease
 
 **Package manager download**
 ```
 # package manager
-Install-Package Microsoft.Web.WebView2 -Version 0.9.579-prerelease
+Install-Package Microsoft.Web.WebView2 -Version 1.0.674-prerelease
 # .net cli
-dotnet add package Microsoft.Web.WebView2 --version 0.9.579-prerelease
+dotnet add package Microsoft.Web.WebView2 --version 1.0.674-prerelease
 ```
-**Browser download** https://www.nuget.org/api/v2/package/Microsoft.Web.WebView2/0.9.579-prerelease save as **.zip** file.
+**Browser download** https://www.nuget.org/api/v2/package/Microsoft.Web.WebView2/1.0.674-prerelease save as **.zip** file.
 
-The latest versions of the Webview2 SDK (88.0.674.0) will not work with the current *WebView2 Runtime* (86.0.622.63) or *Edge Beta* (87.0.664.24).
-The .Net DLLs are only included in the prelease versions.
-
-**Update:** The latest Webview2 SDK version 1.0.674-prerelease appears to work with the Runtime and Edge Beta, even though the release notes state that the minimum browser version needs to be at least 88.0.674.0.
+The .Net DLLs are only included in the NuGet prelease versions.
 
 **Webview2 SDK Release Notes** https://docs.microsoft.com/en-us/microsoft-edge/webview2/releasenotes
-
-**Known Issues**
-* New window is not supported
-
-
-  
+ 
